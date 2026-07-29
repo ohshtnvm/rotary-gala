@@ -486,6 +486,25 @@
   </div>
 </section>
 
+<style>
+  /* Base transition for smooth hover effects */
+  .tier.plate {
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+  }
+
+  /* Hover glow effect using CSS Variables */
+  .tier.plate:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 30px var(--glow-color, rgba(255, 255, 255, 0.3));
+    border-color: var(--glow-border, #ffffff);
+  }
+
+  /* Stronger glow specifically for Presenting Tier */
+  .tier.plate.tier-presenting:hover {
+    box-shadow: 0 15px 35px rgba(186, 85, 211, 0.8), 0 0 15px rgba(255, 255, 255, 0.6);
+  }
+</style>
+
 <!-- TICKETS -->
 <section class="tickets reveal" id="tickets">
   <div class="rays"></div>
@@ -500,7 +519,56 @@
     <div class="deco-rule"><span class="line"></span><span class="diamond"></span><span class="line r"></span></div>
     <br><br>
     <div class="tier-grid">
-      <div class="tier plate">
+      
+      <!-- 1. BRONZE ($1,500) - Bronze Underglow -->
+      <div class="tier plate" style="--glow-color: rgba(205, 127, 50, 0.6); --glow-border: #cd7f32;">
+        <span class="rivet tl"></span><span class="rivet tr"></span><span class="rivet bl"></span><span class="rivet br"></span>
+        <h3 class="tier-name">Bronze</h3>
+        <div class="tier-price"><sup>$</sup>1,500</div>
+        <div class="tier-per">8 guests</div>
+        <ul>
+          <li>Seating for 8 people (one table)</li>
+          <li>Company name exposure during the event</li>
+          <li>Company name on thank-you signage at the event</li>
+        </ul>
+        <button class="tier-btn">Select Bronze</button>
+      </div>
+
+      <!-- 2. SILVER ($3,000) - Light Gray Underglow -->
+      <div class="tier plate" style="--glow-color: rgba(211, 211, 211, 0.6); --glow-border: #d3d3d3;">
+        <span class="rivet tl"></span><span class="rivet tr"></span><span class="rivet bl"></span><span class="rivet br"></span>
+        <h3 class="tier-name">Silver</h3>
+        <div class="tier-price"><sup>$</sup>3,000</div>
+        <div class="tier-per">16 guests</div>
+        <ul>
+          <li>Seating for 16 people (two tables)</li>
+          <li>Company logo exposure during the event</li>
+          <li>Company logo on thank-you signage at the event</li>
+          <li>Company logo displayed on website</li>
+        </ul>
+        <button class="tier-btn">Select Silver</button>
+      </div>
+
+      <!-- 3. GOLD ($5,000) - Gold Underglow (Most Popular) -->
+      <div class="tier plate featured" style="--glow-color: rgba(255, 215, 0, 0.7); --glow-border: #ffd700;">
+        <span class="rivet tl"></span><span class="rivet tr"></span><span class="rivet bl"></span><span class="rivet br"></span>
+        <span class="tier-flag">Most Popular</span>
+        <h3 class="tier-name">Gold</h3>
+        <div class="tier-price"><sup>$</sup>5,000</div>
+        <div class="tier-per">16 guests</div>
+        <ul>
+          <li>Seating for 16 people (two tables)</li>
+          <li>Exposure in pre- and post-event emails</li>
+          <li>Logo on scrolling sponsor screen during the event</li>
+          <li>Recognition during the evening program</li>
+          <li>Logo on top sponsor thank-you signage at the event</li>
+          <li>Company logo displayed on website</li>
+        </ul>
+        <button class="tier-btn">Select Gold</button>
+      </div>
+
+      <!-- 4. DIAMOND ($7,500) - White Underglow -->
+      <div class="tier plate" style="--glow-color: rgba(255, 255, 255, 0.8); --glow-border: #ffffff;">
         <span class="rivet tl"></span><span class="rivet tr"></span><span class="rivet bl"></span><span class="rivet br"></span>
         <h3 class="tier-name">Diamond</h3>
         <div class="tier-price"><sup>$</sup>7,500</div>
@@ -518,24 +586,10 @@
         </ul>
         <button class="tier-btn">Select Diamond</button>
       </div>
-      <div class="tier plate">
+
+      <!-- 5. PRESENTING ($15,000) - Stronger White/Purple Underglow -->
+      <div class="tier plate tier-presenting" style="--glow-color: rgba(186, 85, 211, 0.8); --glow-border: #e0b0ff;">
         <span class="rivet tl"></span><span class="rivet tr"></span><span class="rivet bl"></span><span class="rivet br"></span>
-        <h3 class="tier-name">Gold</h3>
-        <div class="tier-price"><sup>$</sup>5,000</div>
-        <div class="tier-per">16 guests</div>
-        <ul>
-          <li>Seating for 16 people (two tables)</li>
-          <li>Exposure in pre- and post-event emails</li>
-          <li>Logo on scrolling sponsor screen during the event</li>
-          <li>Recognition during the evening program</li>
-          <li>Logo on top sponsor thank-you signage at the event</li>
-          <li>Company logo displayed on website</li>
-        </ul>
-        <button class="tier-btn">Select Gold</button>
-      </div>
-      <div class="tier plate featured">
-        <span class="rivet tl"></span><span class="rivet tr"></span><span class="rivet bl"></span><span class="rivet br"></span>
-        <span class="tier-flag">Most Popular</span>
         <h3 class="tier-name">Presenting</h3>
         <div class="tier-price"><sup>$</sup>15,000</div>
         <div class="tier-per">16 guests</div>
@@ -552,55 +606,11 @@
         </ul>
         <button class="tier-btn">Select Presenting</button>
       </div>
-      <div class="tier plate">
-        <span class="rivet tl"></span><span class="rivet tr"></span><span class="rivet bl"></span><span class="rivet br"></span>
-        <h3 class="tier-name">Silver</h3>
-        <div class="tier-price"><sup>$</sup>3,000</div>
-        <div class="tier-per">16 guests</div>
-        <ul>
-          <li>Seating for 16 people (two tables)</li>
-          <li>Company logo exposure during the event</li>
-          <li>Company logo on thank-you signage at the event</li>
-          <li>Company logo displayed on website</li>
-        </ul>
-        <button class="tier-btn">Select Silver</button>
-      </div>
-      <div class="tier plate">
-        <span class="rivet tl"></span><span class="rivet tr"></span><span class="rivet bl"></span><span class="rivet br"></span>
-        <h3 class="tier-name">Bronze</h3>
-        <div class="tier-price"><sup>$</sup>1,500</div>
-        <div class="tier-per">8 guests</div>
-        <ul>
-          <li>Seating for 8 people (one table)</li>
-          <li>Company name exposure during the event</li>
-          <li>Company name on thank-you signage at the event</li>
-        </ul>
-        <button class="tier-btn">Select Bronze</button>
-      </div>
+
     </div>
     <div class="ribbon-band">
       <span class="ribbon">Still Serving · 1927–2027</span>
       <!--<span class="tail">Sponsoring the centennial? <a href="#contact">Speak with our committee</a> about partnership tables.</span>-->
-    </div>
-  </div>
-</section>
-
-<!-- VENUE / DETAILS -->
-<section class="venue reveal" id="venue">
-  <div class="wrap">
-    <p class="eyebrow">Good to Know</p>
-    <h2 class="section-title">Evening Details</h2>
-    <div class="deco-rule"><span class="line"></span><span class="diamond"></span><span class="line r"></span></div>
-    <br><br>
-    <div class="venue-grid">
-      <div class="vcard"><div class="ic">🗓️</div><h4>Date</h4><p>March 13th, 2027</p></div>
-      <div class="vcard"><div class="ic">🕖</div><h4>Time</h4><p>7:00 PM until midnight</p></div>
-      <div class="vcard"><div class="ic">📍</div><h4>Venue</h4><p>Stirling Hall, Innisbrook Resort, Palm Harbor, Florida</p></div>
-      <div class="vcard"><div class="ic">🅿️</div><h4>Parking</h4><p>Complimentary valet available</p></div>
-    </div>
-    <div class="dress">
-      <h4>ATTIRE</h4>
-      <p>Black-tie optional. Roaring-20s glamour warmly encouraged — feathers, sequins, and tuxedos welcome.</p>
     </div>
   </div>
 </section>
@@ -648,7 +658,11 @@
     <div class="faq-wrap">
       <div class="faq-item"><div class="faq-q">What should I wear? <span class="ic">+</span></div><div class="faq-a"><p>Black-tie optional. We warmly encourage roaring-20s glamour — think art deco elegance, feathers, sequins, and sharp tuxedos. Come dressed for a century worth celebrating.</p></div></div>
       <div class="faq-item"><div class="faq-q">Where exactly is the venue? <span class="ic">+</span></div><div class="faq-a"><p>The gala is held in the Stirling Hall, Innisbrook Resort, Palm Harbor, Florida. Complimentary valet parking is available on the evening of the event.</p></div></div>
-      <div class="faq-item"><div class="faq-q">Can I reserve a full table? <span class="ic">+</span></div><div class="faq-a"><p>Yes. The Legacy Table seats ten and includes premium service and recognition in the program. Sponsoring organizations can also reach out about partnership tables.</p></div></div>
+      <div class="faq-item"><div class="faq-q">Can I reserve a full table? <span class="ic">+</span></div><div class="faq-a"><p>Yes. Full tables are reserved through our sponsorship tiers:</p>
+<ul>
+  <li><strong>1 Table (8 seats):</strong> Available with the <strong>Bronze ($1,500)</strong> tier, which includes company name recognition.</li>
+  <li><strong>2 Tables (16 seats):</strong> Available with <strong>Silver ($3,000)</strong>, <strong>Gold ($5,000)</strong>, <strong>Diamond ($7,500)</strong>, or <strong>Presenting ($15,000)</strong> tiers, which come with added logo exposure and VIP perks.</li>
+</ul></div></div>
       <div class="faq-item"><div class="faq-q">Are dietary needs accommodated? <span class="ic">+</span></div><div class="faq-a"><p>Absolutely. Vegetarian, vegan, gluten-free, and allergy-conscious options are available — simply note your preferences when you reserve.</p></div></div>
       <div class="faq-item"><div class="faq-q">Will proceeds support the community? <span class="ic">+</span></div><div class="faq-a"><p>Yes. Proceeds support the Rotary Club of Tarpon Springs' service projects, scholarships, and community programs — the heart of our next hundred years.</p></div></div>
     </div>
@@ -662,10 +676,26 @@
     <h2 class="section-title">The Centennial Committee</h2>
     <div class="deco-rule"><span class="line"></span><span class="diamond"></span><span class="line r"></span></div>
     <p class="lead" style="margin-top:2rem;">Questions about tickets, tables, or sponsorship? Our committee is glad to help.</p>
-    <div class="venue-grid" style="max-width:760px;">
-      <div class="vcard" style="background:var(--paper);"><div class="ic">✉️</div><h4>Email</h4><p>rotarytarponsprings@gmail.com</p></div>
-      <div class="vcard" style="background:var(--paper);"><div class="ic">☎️</div><h4>Phone</h4><p>(727) 827-1555</p></div>
-      <div class="vcard" style="background:var(--paper);"><div class="ic">🕘</div><h4>Hours</h4><p>Mon–Fri, 9 AM – 5 PM</p></div>
+    
+    <!-- Expanded max-width from 760px to 900px and added internal card padding + text overflow safety -->
+    <div class="venue-grid" style="max-width:900px; margin:0 auto;">
+      <div class="vcard" style="background:var(--paper); padding:1.5rem 1rem; word-break:break-word;">
+        <div class="ic">✉️</div>
+        <h4>Email</h4>
+        <p style="font-size: 0.95rem;"><a href="mailto:rotarytarponsprings@gmail.com" style="color:inherit; text-decoration:underline;">rotarytarponsprings@gmail.com</a></p>
+      </div>
+      
+      <div class="vcard" style="background:var(--paper); padding:1.5rem 1rem;">
+        <div class="ic">☎️</div>
+        <h4>Phone</h4>
+        <p>(727) 827-1555</p>
+      </div>
+      
+      <div class="vcard" style="background:var(--paper); padding:1.5rem 1rem;">
+        <div class="ic">🕘</div>
+        <h4>Hours</h4>
+        <p>Mon–Fri, 9 AM – 5 PM</p>
+      </div>
     </div>
   </div>
 </section>
