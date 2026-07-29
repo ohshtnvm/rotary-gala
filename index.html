@@ -417,6 +417,43 @@
   </div>
 </header>
 
+<!-- JOURNEY / TIMELINE -->
+<section class="timeline reveal" id="journey">
+  <div class="rays"></div>
+  <div class="wrap" style="position:relative;z-index:2;">
+    <p class="eyebrow">Our Journey</p>
+    <h2 class="section-title on-dark">A Century in Moments</h2>
+    <div class="deco-rule"><span class="line"></span><span class="diamond"></span><span class="line r"></span></div>
+    <br><br>
+    <div class="tl">
+      <div class="tl-item"><span class="dot"></span><div class="yr">1927</div><h4>The Charter</h4><p>The Rotary Club of Tarpon Springs is founded as the city's sponge industry roars into its golden age.</p></div>
+      <div class="tl-item"><span class="dot"></span><div class="yr">1950s</div><h4>Building the City</h4><p>Decades of civic projects — parks, scholarships, and support for the families of the sponge fleet.</p></div>
+      <div class="tl-item"><span class="dot"></span><div class="yr">1980s</div><h4>Service Expands</h4><p>New generations carry the torch, broadening community programs and youth initiatives.</p></div>
+      <div class="tl-item"><span class="dot"></span><div class="yr">2010s</div><h4>A Living Heritage</h4><p>The club champions Tarpon Springs' unique culture — the docks, the helmet, and the divers' legacy.</p></div>
+      <div class="tl-item"><span class="dot"></span><div class="yr">2027</div><h4>A Roaring Century</h4><p>One hundred years on, we gather to celebrate the past and pledge the next century of service.</p></div>
+    </div>
+  </div>
+</section>
+
+<style>
+  /* Base transition for smooth hover effects */
+  .tier.plate {
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+  }
+
+  /* Hover glow effect using CSS Variables */
+  .tier.plate:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 30px var(--glow-color, rgba(255, 255, 255, 0.3));
+    border-color: var(--glow-border, #ffffff);
+  }
+
+  /* Stronger glow specifically for Presenting Tier */
+  .tier.plate.tier-presenting:hover {
+    box-shadow: 0 15px 35px rgba(186, 85, 211, 0.8), 0 0 15px rgba(255, 255, 255, 0.6);
+  }
+</style>
+
 <!-- HERITAGE -->
 <section class="heritage reveal" id="heritage">
   <div class="wrap">
@@ -446,64 +483,6 @@
     </div>
   </div>
 </section>
-
-<!-- JOURNEY / TIMELINE -->
-<section class="timeline reveal" id="journey">
-  <div class="rays"></div>
-  <div class="wrap" style="position:relative;z-index:2;">
-    <p class="eyebrow">Our Journey</p>
-    <h2 class="section-title on-dark">A Century in Moments</h2>
-    <div class="deco-rule"><span class="line"></span><span class="diamond"></span><span class="line r"></span></div>
-    <br><br>
-    <div class="tl">
-      <div class="tl-item"><span class="dot"></span><div class="yr">1927</div><h4>The Charter</h4><p>The Rotary Club of Tarpon Springs is founded as the city's sponge industry roars into its golden age.</p></div>
-      <div class="tl-item"><span class="dot"></span><div class="yr">1950s</div><h4>Building the City</h4><p>Decades of civic projects — parks, scholarships, and support for the families of the sponge fleet.</p></div>
-      <div class="tl-item"><span class="dot"></span><div class="yr">1980s</div><h4>Service Expands</h4><p>New generations carry the torch, broadening community programs and youth initiatives.</p></div>
-      <div class="tl-item"><span class="dot"></span><div class="yr">2010s</div><h4>A Living Heritage</h4><p>The club champions Tarpon Springs' unique culture — the docks, the helmet, and the divers' legacy.</p></div>
-      <div class="tl-item"><span class="dot"></span><div class="yr">2027</div><h4>A Roaring Century</h4><p>One hundred years on, we gather to celebrate the past and pledge the next century of service.</p></div>
-    </div>
-  </div>
-</section>
-
-<!-- PROGRAMME -->
-<section class="programme reveal" id="programme">
-  <div class="wrap">
-    <p class="eyebrow">The Evening</p>
-    <h2 class="section-title">Programme of the Gala</h2>
-    <div class="deco-rule"><span class="line"></span><span class="diamond"></span><span class="line r"></span></div>
-    <br><br>
-    <div class="prog-list">
-      <div class="prog-row"><div class="prog-time">7:00 PM</div><div class="prog-body"><h4>Doors Open &amp; Welcome Reception</h4><p>Guests arrive — registration, cocktails &amp; hors d'oeuvres.</p><span class="loc">Grand Foyer</span></div></div>
-      <div class="prog-row"><div class="prog-time">7:45 PM</div><div class="prog-body"><h4>Guests Seated for Dinner</h4><p>Fine dining service begins with the first course.</p><span class="loc">Main Ballroom</span></div></div>
-      <div class="prog-row"><div class="prog-time">8:15 PM</div><div class="prog-body"><h4>Opening Remarks &amp; Toast</h4><p>Welcome address and special acknowledgements.</p><span class="loc">Main Ballroom</span></div></div>
-      <div class="prog-row"><div class="prog-time">8:30 PM</div><div class="prog-body"><h4>Live Performance — Opening Act</h4><p>Professional musical performance.</p><span class="loc">Main Stage</span></div></div>
-      <div class="prog-row"><div class="prog-time">9:00 PM</div><div class="prog-body"><h4>Main Course &amp; Awards Presentation</h4><p>Dinner continues with special recognitions and awards.</p><span class="loc">Main Ballroom</span></div></div>
-      <div class="prog-row"><div class="prog-time">9:45 PM</div><div class="prog-body"><h4>Live Performance — Main Entertainment</h4><p>Premium entertainment act featuring renowned performers.</p><span class="loc">Main Stage</span></div></div>
-      <div class="prog-row"><div class="prog-time">10:30 PM</div><div class="prog-body"><h4>Dessert &amp; Dance Floor Opens</h4><p>Sweet treats served; DJ opens the dance floor.</p><span class="loc">Main Ballroom &amp; Dance Floor</span></div></div>
-      <div class="prog-row"><div class="prog-time">10:45 PM</div><div class="prog-body"><h4>Late Night Entertainment</h4><p>Continued dancing and socializing.</p><span class="loc">Dance Floor &amp; Lounge Areas</span></div></div>
-      <div class="prog-row"><div class="prog-time">12:00 AM</div><div class="prog-body"><h4>Midnight Finale &amp; Closing Remarks</h4><p>Special midnight toast and event conclusion.</p><span class="loc">Main Ballroom</span></div></div>
-    </div>
-  </div>
-</section>
-
-<style>
-  /* Base transition for smooth hover effects */
-  .tier.plate {
-    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
-  }
-
-  /* Hover glow effect using CSS Variables */
-  .tier.plate:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 12px 30px var(--glow-color, rgba(255, 255, 255, 0.3));
-    border-color: var(--glow-border, #ffffff);
-  }
-
-  /* Stronger glow specifically for Presenting Tier */
-  .tier.plate.tier-presenting:hover {
-    box-shadow: 0 15px 35px rgba(186, 85, 211, 0.8), 0 0 15px rgba(255, 255, 255, 0.6);
-  }
-</style>
 
 <!-- TICKETS -->
 <section class="tickets reveal" id="tickets">
@@ -615,20 +594,23 @@
   </div>
 </section>
 
-<!-- GALLERY -->
-<section class="gallery reveal" id="gallery">
+<!-- PROGRAMME -->
+<section class="programme reveal" id="programme">
   <div class="wrap">
-    <p class="eyebrow">A Look Back</p>
-    <h2 class="section-title on-dark">Moments &amp; Memories</h2>
+    <p class="eyebrow">The Evening</p>
+    <h2 class="section-title">Programme of the Gala</h2>
     <div class="deco-rule"><span class="line"></span><span class="diamond"></span><span class="line r"></span></div>
     <br><br>
-    <div class="gal-grid">
-      <div class="gal tall" style="background-image:url('https://images.unsplash.com/photo-1505159940484-eb2b9f2588e2?w=600&h=800&fit=crop')"></div>
-      <div class="gal" style="background-image:url('https://images.unsplash.com/photo-1511795409834-ef04bbd61622?w=600&h=400&fit=crop')"></div>
-      <div class="gal" style="background-image:url('https://images.unsplash.com/photo-1470229722913-7c0e2dbbafd3?w=600&h=400&fit=crop')"></div>
-      <div class="gal wide" style="background-image:url('https://images.unsplash.com/photo-1530103862676-de8c9debad1d?w=900&h=400&fit=crop')"></div>
-      <div class="gal" style="background-image:url('https://images.unsplash.com/photo-1543007630-9710e4a00a20?w=600&h=400&fit=crop')"></div>
-      <div class="gal tall" style="background-image:url('https://images.unsplash.com/photo-1519225421980-715cb0215aed?w=600&h=800&fit=crop')"></div>
+    <div class="prog-list">
+      <div class="prog-row"><div class="prog-time">7:00 PM</div><div class="prog-body"><h4>Doors Open &amp; Welcome Reception</h4><p>Guests arrive — registration, cocktails &amp; hors d'oeuvres.</p><span class="loc">Grand Foyer</span></div></div>
+      <div class="prog-row"><div class="prog-time">7:45 PM</div><div class="prog-body"><h4>Guests Seated for Dinner</h4><p>Fine dining service begins with the first course.</p><span class="loc">Main Ballroom</span></div></div>
+      <div class="prog-row"><div class="prog-time">8:15 PM</div><div class="prog-body"><h4>Opening Remarks &amp; Toast</h4><p>Welcome address and special acknowledgements.</p><span class="loc">Main Ballroom</span></div></div>
+      <div class="prog-row"><div class="prog-time">8:30 PM</div><div class="prog-body"><h4>Live Performance — Opening Act</h4><p>Professional musical performance.</p><span class="loc">Main Stage</span></div></div>
+      <div class="prog-row"><div class="prog-time">9:00 PM</div><div class="prog-body"><h4>Main Course &amp; Awards Presentation</h4><p>Dinner continues with special recognitions and awards.</p><span class="loc">Main Ballroom</span></div></div>
+      <div class="prog-row"><div class="prog-time">9:45 PM</div><div class="prog-body"><h4>Live Performance — Main Entertainment</h4><p>Premium entertainment act featuring renowned performers.</p><span class="loc">Main Stage</span></div></div>
+      <div class="prog-row"><div class="prog-time">10:30 PM</div><div class="prog-body"><h4>Dessert &amp; Dance Floor Opens</h4><p>Sweet treats served; DJ opens the dance floor.</p><span class="loc">Main Ballroom &amp; Dance Floor</span></div></div>
+      <div class="prog-row"><div class="prog-time">10:45 PM</div><div class="prog-body"><h4>Late Night Entertainment</h4><p>Continued dancing and socializing.</p><span class="loc">Dance Floor &amp; Lounge Areas</span></div></div>
+      <div class="prog-row"><div class="prog-time">12:00 AM</div><div class="prog-body"><h4>Midnight Finale &amp; Closing Remarks</h4><p>Special midnight toast and event conclusion.</p><span class="loc">Main Ballroom</span></div></div>
     </div>
   </div>
 </section>
@@ -644,6 +626,24 @@
       <div class="voice"><div class="q">“</div><p>This club raised me as much as my family did. A hundred years of service — and it still feels like a beginning.</p><div class="who">A Longtime Member</div><div class="role">Rotarian, 30 Years</div></div>
       <div class="voice"><div class="q">“</div><p>The divers built this town and this club kept its heart beating. There's nowhere else like Tarpon Springs.</p><div class="who">A Sponge Dock Family</div><div class="role">Community Partner</div></div>
       <div class="voice"><div class="q">“</div><p>Every scholarship, every project, every helping hand — that's what a century of service looks like up close.</p><div class="who">A Local Educator</div><div class="role">Grant Recipient</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section class="gallery reveal" id="gallery">
+  <div class="wrap">
+    <p class="eyebrow">A Look Back</p>
+    <h2 class="section-title on-dark">Moments &amp; Memories</h2>
+    <div class="deco-rule"><span class="line"></span><span class="diamond"></span><span class="line r"></span></div>
+    <br><br>
+    <div class="gal-grid">
+      <div class="gal tall" style="background-image:url('https://images.unsplash.com/photo-1505159940484-eb2b9f2588e2?w=600&h=800&fit=crop')"></div>
+      <div class="gal" style="background-image:url('https://images.unsplash.com/photo-1511795409834-ef04bbd61622?w=600&h=400&fit=crop')"></div>
+      <div class="gal" style="background-image:url('https://images.unsplash.com/photo-1470229722913-7c0e2dbbafd3?w=600&h=400&fit=crop')"></div>
+      <div class="gal wide" style="background-image:url('https://images.unsplash.com/photo-1530103862676-de8c9debad1d?w=900&h=400&fit=crop')"></div>
+      <div class="gal" style="background-image:url('https://images.unsplash.com/photo-1543007630-9710e4a00a20?w=600&h=400&fit=crop')"></div>
+      <div class="gal tall" style="background-image:url('https://images.unsplash.com/photo-1519225421980-715cb0215aed?w=600&h=800&fit=crop')"></div>
     </div>
   </div>
 </section>
@@ -706,11 +706,11 @@
   <div style="position:relative;z-index:2;">
     <img src="helmet.svg" alt="Diver's helmet emblem" class="foot-helmet">
     <h3>A ROARING CENTURY OF SERVICE</h3>
-    <p class="ftagline">Rotary Club of Tarpon Springs · Still Serving · 1927–2027</p>
+    <p class="ftagline">Rotary Club of Tarpon Springs</p>
     <div class="foot-cols">
       <div><h5>Explore</h5><a href="#heritage">Heritage</a><a href="#journey">Our Journey</a><a href="#programme">Programme</a><a href="#tickets">Tickets</a></div>
-      <div><h5>Visit</h5><p>Main Ballroom</p><p>Tarpon Springs Event Hall</p><p>March 13th, 2027 · 7:00 PM</p></div>
-      <div><h5>Connect</h5><a href="#">Facebook</a><a href="#">Instagram</a><a href="#contact">Contact Committee</a></div>
+      <!--<div><h5>Visit</h5><p>Main Ballroom</p><p>Tarpon Springs Event Hall</p><p>March 13th, 2027 · 7:00 PM</p></div>-->
+      <div><h5>Connect</h5><a href="https://www.facebook.com/TarponSpringsRotary">Facebook</a><a href="https://www.instagram.com/tarponspringsrotary/">Instagram</a><a href="#contact">Contact Committee</a></div>
     </div>
     <div class="foot-bottom">© 2027 Rotary Club of Tarpon Springs · Service Above Self · A Roaring Century of Service</div>
   </div>
