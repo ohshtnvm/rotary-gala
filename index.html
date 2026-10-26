@@ -309,7 +309,7 @@
       <div class="divider"></div>
       <div class="m"><b>Stirling Hall</b><small>Innisbrook Resort,<br>Palm Harbor, Florida</small></div>
     </div>
-    <button class="hero-cta" data-gb-account="TqkNguzR8tf9WpAW" data-gb-campaign="GIVEBUTTER_CAMPAIGN_ID">Reserve Your Seat</button>
+    <button class="hero-cta" onclick="document.getElementById('tickets').scrollIntoView()">Reserve Your Seat</button>
     <p class="hero-note">Black-tie optional · Roaring-20s attire encouraged · Limited capacity</p>
   </div>
 </header>
@@ -629,9 +629,10 @@ VOICES end of hidden block -->
   document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
 
   // ===== CHECKOUT =====
-  // Handled by Givebutter. The library is loaded in <head>; the hero CTA and
-  // each tier button carry data-gb-account / data-gb-campaign, which the
-  // library turns into donation triggers. No checkout code lives in this file.
+  // Handled by Givebutter. The library is loaded in <head>; each tier button
+  // carries data-gb-account / data-gb-campaign, which the library turns into a
+  // donation trigger. The hero CTA just scrolls to the tiers. No checkout code
+  // lives in this file.
 
 </script>
 </body>
