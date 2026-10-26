@@ -242,114 +242,11 @@
   .reveal{opacity:0;transform:translateY(28px);transition:opacity .7s ease,transform .7s ease;}
   .reveal.in{opacity:1;transform:none;}
 
-  /* ===== PAYMENT MODAL ===== */
-  .modal-overlay{
-    display:none;position:fixed;inset:0;z-index:9000;
-    background:rgba(5,13,31,0.88);backdrop-filter:blur(6px);
-    align-items:center;justify-content:center;padding:1.2rem;
-  }
-  .modal-overlay.open{display:flex;}
-
-  .modal{
-    position:relative;width:100%;max-width:560px;max-height:90vh;overflow-y:auto;
-    background:linear-gradient(145deg,#0c1f44 0%,#0a1937 50%,#081530 100%);
-    border:1px solid rgba(241,184,74,0.45);
-    box-shadow:inset 0 1px 0 rgba(255,255,255,0.07),inset 0 0 60px rgba(0,0,0,0.5),0 28px 60px rgba(5,13,31,0.7);
-    animation:modalIn .35s cubic-bezier(.2,.8,.2,1);
-  }
-  @keyframes modalIn{from{opacity:0;transform:translateY(24px) scale(.97);}to{opacity:1;transform:none;}}
-  .modal::before{content:'';position:absolute;inset:9px;border:1px solid rgba(241,184,74,0.2);pointer-events:none;z-index:0;}
-  .modal-rivet{position:absolute;width:7px;height:7px;border-radius:50%;z-index:1;
-    background:radial-gradient(circle at 35% 30%,var(--gold-soft),var(--gold-deep) 60%,#8a6320);
-    box-shadow:0 1px 2px rgba(0,0,0,0.5);}
-  .modal-rivet.tl{top:14px;left:14px;}.modal-rivet.tr{top:14px;right:14px;}
-  .modal-rivet.bl{bottom:14px;left:14px;}.modal-rivet.br{bottom:14px;right:14px;}
-
-  .modal-inner{position:relative;z-index:1;padding:2.4rem 2.2rem 2rem;}
-
-  .modal-close{
-    position:absolute;top:1.1rem;right:1.2rem;z-index:10;
-    background:none;border:1px solid rgba(241,184,74,0.3);color:var(--gold);
-    width:32px;height:32px;cursor:pointer;font-size:1rem;
-    display:flex;align-items:center;justify-content:center;
-    font-family:'ZCool XiaoWei',serif;transition:all .25s;
-  }
-  .modal-close:hover{background:rgba(241,184,74,0.15);border-color:var(--gold);}
-
-  .modal-eyebrow{color:var(--gold-deep);letter-spacing:4px;text-transform:uppercase;font-size:0.72rem;margin-bottom:0.5rem;}
-  .modal-title{font-family:'ZCool XiaoWei',serif;font-size:1.9rem;color:var(--gold);letter-spacing:2px;margin-bottom:0.3rem;}
-  .modal-price-display{font-family:'ZCool XiaoWei',serif;font-size:2.4rem;color:var(--cream);letter-spacing:1px;margin:0.3rem 0 1.4rem;}
-  .modal-price-display sup{font-size:1rem;color:var(--gold-soft);vertical-align:super;}
-
-  .modal-deco{display:flex;align-items:center;gap:0.7rem;margin-bottom:1.6rem;}
-  .modal-deco .ml{height:1px;flex:1;background:linear-gradient(90deg,transparent,var(--gold-deep));}
-  .modal-deco .mr{height:1px;flex:1;background:linear-gradient(90deg,var(--gold-deep),transparent);}
-  .modal-deco .md{width:6px;height:6px;background:var(--gold-deep);transform:rotate(45deg);}
-
-  /* Tier radio buttons */
-  .tier-radios{display:flex;flex-wrap:wrap;gap:0.6rem;margin-bottom:1.8rem;}
-  .tier-radio-label{
-    position:relative;cursor:pointer;
-    padding:0.55rem 1.1rem;border:1px solid rgba(241,184,74,0.3);
-    color:rgba(246,239,221,0.65);font-family:'ZCool XiaoWei',serif;
-    font-size:0.88rem;letter-spacing:1px;transition:all .25s;
-  }
-  .tier-radio-label input{position:absolute;opacity:0;width:0;height:0;}
-  .tier-radio-label:hover{border-color:var(--gold);color:var(--cream);}
-  .tier-radio-label.checked{
-    background:rgba(241,184,74,0.15);border-color:var(--gold);color:var(--gold);
-    box-shadow:inset 0 0 12px rgba(241,184,74,0.08);
-  }
-  .tier-radio-price{display:block;font-family:'Fraunces',serif;font-size:0.72rem;color:rgba(246,239,221,0.5);letter-spacing:0;margin-top:0.1rem;}
-  .tier-radio-label.checked .tier-radio-price{color:var(--gold-soft);}
-
-  /* Form fields */
-  .modal-field{margin-bottom:1.3rem;}
-  .modal-label{display:block;font-size:0.72rem;letter-spacing:2px;text-transform:uppercase;color:var(--gold-deep);margin-bottom:0.45rem;font-family:'Fraunces',serif;}
-  .modal-input{
-    width:100%;padding:0.75rem 1rem;
-    background:rgba(5,13,31,0.6);border:1px solid rgba(241,184,74,0.3);
-    color:var(--cream);font-family:'Fraunces',serif;font-size:0.97rem;
-    outline:none;transition:border-color .25s;
-  }
-  .modal-input:focus{border-color:var(--gold);}
-  .modal-input::placeholder{color:rgba(246,239,221,0.3);}
-
-  .modal-input-row{display:grid;grid-template-columns:1fr 1fr;gap:1rem;}
-  @media(max-width:480px){.modal-input-row{grid-template-columns:1fr;}}
-
-  /* Receipt notice */
-  .modal-receipt{
-    display:flex;align-items:flex-start;gap:0.75rem;
-    margin:1.4rem 0;padding:1rem 1.1rem;
-    background:rgba(241,184,74,0.07);border:1px solid rgba(241,184,74,0.25);
-  }
-  .modal-receipt .receipt-icon{font-size:1.2rem;flex-shrink:0;margin-top:0.05rem;}
-  .modal-receipt p{font-size:0.85rem;color:rgba(246,239,221,0.7);line-height:1.5;}
-  .modal-receipt strong{color:var(--gold-soft);}
-
-  /* Submit button */
-  .modal-submit{
-    width:100%;padding:1.05rem;margin-top:0.4rem;
-    background:var(--gold);color:var(--navy);border:none;cursor:pointer;
-    font-family:'ZCool XiaoWei',serif;font-size:1.1rem;letter-spacing:2px;
-    transition:all .3s;
-  }
-  .modal-submit:hover{background:var(--gold-soft);transform:translateY(-2px);box-shadow:0 10px 28px rgba(241,184,74,0.35);}
-  .modal-submit:disabled{opacity:0.5;cursor:not-allowed;transform:none;}
-
-  /* Success state */
-  .modal-success{
-    display:none;text-align:center;padding:1rem 0 0.5rem;
-    animation:modalIn .4s cubic-bezier(.2,.8,.2,1);
-  }
-  .modal-success.show{display:block;}
-  .modal-form-wrap.hide{display:none;}
-  .success-icon{font-size:3rem;margin-bottom:0.8rem;}
-  .success-title{font-family:'ZCool XiaoWei',serif;font-size:1.8rem;color:var(--gold);letter-spacing:2px;margin-bottom:0.6rem;}
-  .success-body{color:rgba(246,239,221,0.75);font-size:0.97rem;line-height:1.65;max-width:380px;margin:0 auto 1.4rem;}
-  .success-deco{color:var(--gold-deep);letter-spacing:3px;font-size:0.72rem;text-transform:uppercase;}
 </style>
+<script
+  async
+  src="https://widgets.givebutter.com/latest.umd.cjs?acct=TqkNguzR8tf9WpAW&p=other"
+></script>
 </head>
 <body>
 
@@ -362,7 +259,7 @@
   <ul class="nav-links">
     <li><a href="#heritage">Heritage</a></li>
     <li><a href="#tickets">Tickets</a></li>
-    <!-- v1: hidden <li><a href="#programme">Programme</a></li> -->
+    <!-- hidden <li><a href="#programme">Programme</a></li> -->
     <li><a href="#journey">Journey</a></li>
     <li><a href="#faq">Details</a></li>
   </ul>
@@ -412,7 +309,7 @@
       <div class="divider"></div>
       <div class="m"><b>Stirling Hall</b><small>Innisbrook Resort,<br>Palm Harbor, Florida</small></div>
     </div>
-    <button class="hero-cta" onclick="document.getElementById('tickets').scrollIntoView()">Reserve Your Seat</button>
+    <button class="hero-cta" data-gb-account="TqkNguzR8tf9WpAW" data-gb-campaign="GIVEBUTTER_CAMPAIGN_ID">Reserve Your Seat</button>
     <p class="hero-note">Black-tie optional · Roaring-20s attire encouraged · Limited capacity</p>
   </div>
 </header>
@@ -474,7 +371,7 @@
     <h2 class="section-title on-dark">Tickets &amp; Sponsorship</h2> 
     <div class="dress">
       <h4>Price per Person</h4>
-      <p>Price per person will be $150, which includes a $50 donation to the Rotary Youth Trust Fund.</p>
+      <p>Price per person will be $150, which includes a $25 donation to the Rotary Youth Trust Fund.</p>
     </div>
     <br><br>
     <div class="deco-rule"><span class="line"></span><span class="diamond"></span><span class="line r"></span></div>
@@ -492,7 +389,7 @@
           <li>Company name exposure during the event</li>
           <li>Company name on thank-you signage at the event</li>
         </ul>
-        <button class="tier-btn">Select Bronze</button>
+        <button class="tier-btn" data-gb-account="TqkNguzR8tf9WpAW" data-gb-campaign="GIVEBUTTER_CAMPAIGN_ID">Select Bronze</button>
       </div>
 
       <!-- 2. SILVER ($3,000) - Light Gray Underglow -->
@@ -507,7 +404,7 @@
           <li>Company logo on thank-you signage at the event</li>
           <li>Company logo displayed on website</li>
         </ul>
-        <button class="tier-btn">Select Silver</button>
+        <button class="tier-btn" data-gb-account="TqkNguzR8tf9WpAW" data-gb-campaign="GIVEBUTTER_CAMPAIGN_ID">Select Silver</button>
       </div>
 
       <!-- 3. GOLD ($5,000) - Gold Underglow (Most Popular) -->
@@ -525,7 +422,7 @@
           <li>Logo on top sponsor thank-you signage at the event</li>
           <li>Company logo displayed on website</li>
         </ul>
-        <button class="tier-btn">Select Gold</button>
+        <button class="tier-btn" data-gb-account="TqkNguzR8tf9WpAW" data-gb-campaign="GIVEBUTTER_CAMPAIGN_ID">Select Gold</button>
       </div>
 
       <!-- 4. DIAMOND ($7,500) - White Underglow -->
@@ -545,7 +442,7 @@
           <li>Company logo displayed at photo opp</li>
           <li>Company logo displayed on website</li>
         </ul>
-        <button class="tier-btn">Select Diamond</button>
+        <button class="tier-btn" data-gb-account="TqkNguzR8tf9WpAW" data-gb-campaign="GIVEBUTTER_CAMPAIGN_ID">Select Diamond</button>
       </div>
 
       <!-- 5. PRESENTING ($15,000) - Stronger White/Purple Underglow -->
@@ -565,7 +462,7 @@
           <li>Registration Sponsor</li>
           <li>Company logo displayed at registration</li>
         </ul>
-        <button class="tier-btn">Select Presenting</button>
+        <button class="tier-btn" data-gb-account="TqkNguzR8tf9WpAW" data-gb-campaign="GIVEBUTTER_CAMPAIGN_ID">Select Presenting</button>
       </div>
 
     </div>
@@ -577,7 +474,7 @@
 </section>
 
 <!-- PROGRAMME -->
-<!-- v1: HIDDEN PROGRAMME — remove this line and the closing marker to restore
+<!-- HIDDEN PROGRAMME — remove this line and the closing marker to restore
 <section class="programme reveal" id="programme">
   <div class="wrap">
     <p class="eyebrow">The Evening</p>
@@ -600,7 +497,7 @@
 PROGRAMME end of hidden block -->
 
 <!-- VOICES -->
-<!-- v1: HIDDEN VOICES — remove this line and the closing marker to restore
+<!-- HIDDEN VOICES — remove this line and the closing marker to restore
 <section class="voices reveal" id="voices">
   <div class="wrap">
     <p class="eyebrow">In Their Words</p>
@@ -720,105 +617,6 @@ VOICES end of hidden block -->
   </div>
 </footer>
 
-<!-- PAYMENT MODAL -->
-<div class="modal-overlay" id="paymentModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
-  <div class="modal">
-    <span class="modal-rivet tl"></span><span class="modal-rivet tr"></span>
-    <span class="modal-rivet bl"></span><span class="modal-rivet br"></span>
-    <button class="modal-close" id="modalClose" aria-label="Close">✕</button>
-    <div class="modal-inner">
-
-      <!-- Header -->
-      <p class="modal-eyebrow">Reserve Your Place</p>
-      <h2 class="modal-title" id="modalTitle">Sponsorship Registration</h2>
-      <div id="modalPriceDisplay" class="modal-price-display"><sup>$</sup><span id="modalPriceAmt">0</span></div>
-      <div class="modal-deco"><span class="ml"></span><span class="md"></span><span class="mr"></span></div>
-
-      <!-- Form -->
-      <div class="modal-form-wrap" id="modalFormWrap">
-
-        <!-- Tier selector -->
-        <div class="modal-field">
-          <span class="modal-label">Sponsorship Tier</span>
-          <div class="tier-radios" id="tierRadios">
-            <label class="tier-radio-label" data-tier="Presenting" data-price="15000">
-              <input type="radio" name="tier" value="Presenting">
-              Presenting<span class="tier-radio-price">$15,000 · 16 guests</span>
-            </label>
-            <label class="tier-radio-label" data-tier="Diamond" data-price="7500">
-              <input type="radio" name="tier" value="Diamond">
-              Diamond<span class="tier-radio-price">$7,500 · 16 guests</span>
-            </label>
-            <label class="tier-radio-label" data-tier="Gold" data-price="5000">
-              <input type="radio" name="tier" value="Gold">
-              Gold<span class="tier-radio-price">$5,000 · 16 guests</span>
-            </label>
-            <label class="tier-radio-label" data-tier="Silver" data-price="3000">
-              <input type="radio" name="tier" value="Silver">
-              Silver<span class="tier-radio-price">$3,000 · 16 guests</span>
-            </label>
-            <label class="tier-radio-label" data-tier="Bronze" data-price="1500">
-              <input type="radio" name="tier" value="Bronze">
-              Bronze<span class="tier-radio-price">$1,500 · 8 guests</span>
-            </label>
-          </div>
-        </div>
-
-        <!-- Contact info -->
-        <div class="modal-field">
-          <label class="modal-label" for="modalName">Full Name / Organization</label>
-          <input class="modal-input" type="text" id="modalName" placeholder="e.g. Sponge Dock Holdings LLC" autocomplete="name">
-        </div>
-
-        <div class="modal-input-row">
-          <div class="modal-field">
-            <label class="modal-label" for="modalEmail">Email Address</label>
-            <input class="modal-input" type="email" id="modalEmail" placeholder="you@example.com" autocomplete="email">
-          </div>
-          <div class="modal-field">
-            <label class="modal-label" for="modalPhone">Phone (Optional)</label>
-            <input class="modal-input" type="tel" id="modalPhone" placeholder="(727) 000-0000" autocomplete="tel">
-          </div>
-        </div>
-
-        <!-- Payment -->
-        <div class="modal-field">
-          <label class="modal-label" for="modalCard">Card Number</label>
-          <input class="modal-input" type="text" id="modalCard" placeholder="•••• •••• •••• ••••" maxlength="19" inputmode="numeric">
-        </div>
-
-        <div class="modal-input-row">
-          <div class="modal-field">
-            <label class="modal-label" for="modalExpiry">Expiry</label>
-            <input class="modal-input" type="text" id="modalExpiry" placeholder="MM / YY" maxlength="7" inputmode="numeric">
-          </div>
-          <div class="modal-field">
-            <label class="modal-label" for="modalCvc">CVC</label>
-            <input class="modal-input" type="text" id="modalCvc" placeholder="•••" maxlength="4" inputmode="numeric">
-          </div>
-        </div>
-
-        <!-- Receipt notice -->
-        <div class="modal-receipt">
-          <span class="receipt-icon">✉️</span>
-          <p>A <strong>confirmation email with your receipt</strong> will be sent to the address above immediately upon payment. Please keep it for your records. Questions? Contact us at <strong>rotarytarponsprings.centennial@gmail.com</strong>.</p>
-        </div>
-
-        <button class="modal-submit" id="modalSubmit">Complete Registration</button>
-      </div><!-- /modal-form-wrap -->
-
-      <!-- Success state -->
-      <div class="modal-success" id="modalSuccess">
-        <div class="success-icon">✦</div>
-        <h3 class="success-title">You're Registered</h3>
-        <p class="success-body">Thank you for your generosity. A confirmation email with your receipt has been sent. We look forward to celebrating a century of service with you on <strong style="color:var(--gold-soft)">March 13th, 2027</strong> at Stirling Hall, Innisbrook Resort.</p>
-        <div class="success-deco">A Roaring Century of Service · 1927–2027</div>
-      </div>
-
-    </div><!-- /modal-inner -->
-  </div><!-- /modal -->
-</div><!-- /modal-overlay -->
-
 <script>
   // FAQ accordion
   document.querySelectorAll('.faq-q').forEach(q=>{
@@ -830,126 +628,11 @@ VOICES end of hidden block -->
   },{threshold:0.12});
   document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
 
-  // ===== PAYMENT MODAL =====
-  const TIER_DATA = {
-    Presenting: { price: 15000, label: 'Presenting Sponsor' },
-    Diamond:    { price: 7500,  label: 'Diamond Sponsor' },
-    Gold:       { price: 5000,  label: 'Gold Sponsor' },
-    Silver:     { price: 3000,  label: 'Silver Sponsor' },
-    Bronze:     { price: 1500,  label: 'Bronze Sponsor' },
-  };
+  // ===== CHECKOUT =====
+  // Handled by Givebutter. The library is loaded in <head>; the hero CTA and
+  // each tier button carry data-gb-account / data-gb-campaign, which the
+  // library turns into donation triggers. No checkout code lives in this file.
 
-  const overlay   = document.getElementById('paymentModal');
-  const modalClose= document.getElementById('modalClose');
-  const modalTitle= document.getElementById('modalTitle');
-  const priceAmt  = document.getElementById('modalPriceAmt');
-  const formWrap  = document.getElementById('modalFormWrap');
-  const successEl = document.getElementById('modalSuccess');
-  const submitBtn = document.getElementById('modalSubmit');
-  const tierRadios= document.querySelectorAll('#tierRadios .tier-radio-label');
-
-  function formatPrice(n){ return n.toLocaleString('en-US'); }
-
-  function openModal(tier){
-    // Reset to form state
-    formWrap.classList.remove('hide');
-    successEl.classList.remove('show');
-    submitBtn.disabled = false;
-    submitBtn.textContent = 'Complete Registration';
-
-    // Set tier
-    selectTier(tier);
-
-    overlay.classList.add('open');
-    document.body.style.overflow='hidden';
-    // Focus trap seed
-    setTimeout(()=>document.getElementById('modalName').focus(),120);
-  }
-
-  function selectTier(tier){
-    const data = TIER_DATA[tier] || TIER_DATA['Presenting'];
-    // Update display
-    modalTitle.textContent = data.label + ' Registration';
-    priceAmt.textContent   = formatPrice(data.price);
-    // Update radio UI
-    tierRadios.forEach(lbl=>{
-      const input = lbl.querySelector('input');
-      if(lbl.dataset.tier === tier){
-        lbl.classList.add('checked');
-        input.checked = true;
-      } else {
-        lbl.classList.remove('checked');
-        input.checked = false;
-      }
-    });
-  }
-
-  function closeModal(){
-    overlay.classList.remove('open');
-    document.body.style.overflow='';
-  }
-
-  // Wire tier buttons
-  document.querySelectorAll('.tier-btn').forEach(btn=>{
-    btn.addEventListener('click',()=>{
-      // Extract tier name from button text, e.g. "Select Diamond" -> "Diamond"
-      const text  = btn.textContent.trim();
-      const tier  = text.replace('Select','').trim();
-      openModal(tier);
-    });
-  });
-
-  // Wire hero CTA
-  document.querySelector('.hero-cta')?.addEventListener('click',e=>{
-    e.stopPropagation();
-  });
-
-  // Radio clicks inside modal
-  tierRadios.forEach(lbl=>{
-    lbl.addEventListener('click',()=>selectTier(lbl.dataset.tier));
-  });
-
-  // Close
-  modalClose.addEventListener('click', closeModal);
-  overlay.addEventListener('click', e=>{ if(e.target===overlay) closeModal(); });
-  document.addEventListener('keydown', e=>{ if(e.key==='Escape' && overlay.classList.contains('open')) closeModal(); });
-
-  // Card number formatting
-  document.getElementById('modalCard').addEventListener('input',function(){
-    let v=this.value.replace(/\D/g,'').slice(0,16);
-    this.value=v.replace(/(.{4})/g,'$1 ').trim();
-  });
-  // Expiry formatting
-  document.getElementById('modalExpiry').addEventListener('input',function(){
-    let v=this.value.replace(/\D/g,'').slice(0,4);
-    if(v.length>=3) v=v.slice(0,2)+' / '+v.slice(2);
-    this.value=v;
-  });
-
-  // Submit (mock)
-  submitBtn.addEventListener('click',()=>{
-    const name  = document.getElementById('modalName').value.trim();
-    const email = document.getElementById('modalEmail').value.trim();
-    const card  = document.getElementById('modalCard').value.replace(/\s/g,'');
-    const expiry= document.getElementById('modalExpiry').value.trim();
-    const cvc   = document.getElementById('modalCvc').value.trim();
-    const tierChecked = document.querySelector('#tierRadios input:checked');
-
-    if(!tierChecked){ alert('Please select a sponsorship tier.'); return; }
-    if(!name)        { alert('Please enter your name or organization.'); return; }
-    if(!email || !email.includes('@')){ alert('Please enter a valid email address.'); return; }
-    if(card.length < 16){ alert('Please enter a valid 16-digit card number.'); return; }
-    if(!expiry || expiry.length < 7){ alert('Please enter a valid expiry date.'); return; }
-    if(!cvc || cvc.length < 3){ alert('Please enter your CVC.'); return; }
-
-    // Simulate processing
-    submitBtn.disabled = true;
-    submitBtn.textContent = 'Processing…';
-    setTimeout(()=>{
-      formWrap.classList.add('hide');
-      successEl.classList.add('show');
-    }, 1400);
-  });
 </script>
 </body>
 </html>
