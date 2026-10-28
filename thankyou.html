@@ -116,7 +116,7 @@
 
   .mosaic{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));
     grid-auto-rows:112px;grid-auto-flow:dense;gap:9px;max-width:1340px;margin:0 auto;}
-  .tile{position:relative;overflow:hidden;background:var(--navy-2);grid-row:span 1;
+  .tile{position:relative;overflow:hidden;background:var(--navy-2);grid-row:span 1;cursor:zoom-in;
     opacity:0;transform:translateY(26px) scale(.955);
     transition:opacity .95s ease,transform 1.05s cubic-bezier(.2,.8,.2,1);}
   .tile.in{opacity:1;transform:none;}
@@ -131,6 +131,38 @@
   .tile:hover img{filter:grayscale(0) sepia(0) contrast(1.02) brightness(1);transform:scale(1.07);}
   .tile:hover::after{border-color:rgba(241,184,74,0.75);box-shadow:inset 0 0 26px rgba(241,184,74,0.18),0 10px 34px rgba(0,0,0,0.55);}
   @media(max-width:560px){.mosaic{grid-auto-rows:92px;gap:6px;}}
+
+  /* ===== LIGHTBOX ===== */
+  .lb{position:fixed;inset:0;z-index:100;display:none;align-items:center;justify-content:center;
+    background:rgba(3,8,20,0.94);backdrop-filter:blur(7px);-webkit-backdrop-filter:blur(7px);}
+  .lb.open{display:flex;animation:lbFade .32s ease;}
+  @keyframes lbFade{from{opacity:0;}to{opacity:1;}}
+
+  .lb-stage{position:relative;max-width:min(1120px,90vw);max-height:84vh;}
+  .lb-stage img{display:block;max-width:100%;max-height:84vh;width:auto;height:auto;
+    border:1px solid rgba(241,184,74,0.45);box-shadow:0 34px 90px rgba(0,0,0,0.78);}
+  .lb-stage.pop img{animation:lbPop .52s cubic-bezier(.2,.9,.25,1);}
+  @keyframes lbPop{from{opacity:0;transform:scale(.93) translateY(16px);}to{opacity:1;transform:none;}}
+  .lb-stage .rivet{z-index:2;}
+  .lb-stage .rivet.tl{top:-4px;left:-4px;}.lb-stage .rivet.tr{top:-4px;right:-4px;}
+  .lb-stage .rivet.bl{bottom:-4px;left:-4px;}.lb-stage .rivet.br{bottom:-4px;right:-4px;}
+
+  .lb-btn{position:absolute;background:transparent;border:1px solid rgba(241,184,74,0.35);
+    color:var(--gold);cursor:pointer;font-family:'ZCool XiaoWei',serif;
+    display:flex;align-items:center;justify-content:center;transition:all .3s;}
+  .lb-btn:hover{background:var(--gold);color:var(--navy);border-color:var(--gold);}
+  .lb-prev,.lb-next{top:50%;transform:translateY(-50%);width:50px;height:50px;font-size:1.3rem;}
+  .lb-prev{left:max(1rem,3vw);}
+  .lb-next{right:max(1rem,3vw);}
+  .lb-close{top:max(1rem,3vh);right:max(1rem,3vw);width:42px;height:42px;font-size:0.95rem;}
+  .lb-count{position:absolute;bottom:max(1.2rem,3vh);left:50%;transform:translateX(-50%);
+    font-size:0.72rem;letter-spacing:3px;color:rgba(246,239,221,0.55);}
+  .lb-count b{color:var(--gold);font-weight:400;}
+  @media(max-width:620px){
+    .lb-prev,.lb-next{width:42px;height:42px;top:auto;bottom:max(1.2rem,3vh);transform:none;}
+    .lb-prev{left:1rem;} .lb-next{right:1rem;}
+    .lb-stage{max-width:94vw;}
+  }
 
   /* ===== FOOTER ===== */
   footer{background:var(--navy);border-top:1px solid rgba(241,184,74,0.18);
@@ -147,6 +179,7 @@
       transition-duration:.001ms !important;}
     .tile{opacity:1;transform:none;}
     .backdrop{animation:none;}
+    .lb-stage.pop img{animation:none;}
   }
 </style>
 </head>
@@ -188,7 +221,7 @@
   <p class="eyebrow">From the Club Archive</p>
   <h2>A Century, in Pictures</h2>
   <div class="deco-rule"><span class="line"></span><span class="diamond"></span><span class="line r"></span></div>
-  <p class="hint">Touch any frame to bring it back to colour</p>
+  <p class="hint">Hover to bring a frame back to colour &nbsp;·&nbsp; click to open it</p>
   <div class="mosaic" id="mosaic"></div>
 </section>
 
@@ -197,6 +230,18 @@
   <p>Rotary Club of Tarpon Springs</p>
   <a class="back" href="index.html">Back to the Gala</a>
 </footer>
+
+<div class="lb" id="lb" role="dialog" aria-modal="true" aria-label="Archive photograph">
+  <button class="lb-btn lb-close" id="lbClose" aria-label="Close">&#10005;</button>
+  <button class="lb-btn lb-prev" id="lbPrev" aria-label="Previous photograph">&#8249;</button>
+  <div class="lb-stage" id="lbStage">
+    <span class="rivet tl"></span><span class="rivet tr"></span>
+    <span class="rivet bl"></span><span class="rivet br"></span>
+    <img id="lbImg" alt="Rotary Club of Tarpon Springs archive photograph">
+  </div>
+  <button class="lb-btn lb-next" id="lbNext" aria-label="Next photograph">&#8250;</button>
+  <div class="lb-count"><b id="lbNow">1</b> &nbsp;/&nbsp; <span id="lbTotal">72</span></div>
+</div>
 
 <script>
   const TOTAL = 72;
@@ -282,6 +327,73 @@
       else el.textContent = target;
     })(t0);
   }
+
+  // --- lightbox
+  const lb = document.getElementById('lb');
+  const lbImg = document.getElementById('lbImg');
+  const lbStage = document.getElementById('lbStage');
+  const lbNow = document.getElementById('lbNow');
+  document.getElementById('lbTotal').textContent = TOTAL;
+  const tileList = [...tiles];
+  let cur = 0, lastFocus = null;
+
+  const srcFor = n => 'pics/p' + pad(n) + '.webp';
+
+  function show(i, animate) {
+    cur = (i + TOTAL) % TOTAL;                 // wraps both ways
+    lbImg.src = srcFor(cur + 1);
+    lbNow.textContent = cur + 1;
+    if (animate && !reduce) {
+      lbStage.classList.remove('pop');
+      void lbStage.offsetWidth;                // restart the animation
+      lbStage.classList.add('pop');
+    }
+    [cur + 2, cur].forEach(n => {              // preload the neighbours
+      const m = ((n - 1 + TOTAL) % TOTAL) + 1;
+      new Image().src = srcFor(m);
+    });
+  }
+
+  function openLB(i) {
+    lastFocus = document.activeElement;
+    show(i, true);
+    lb.classList.add('open');
+    document.body.style.overflow = 'hidden';
+    document.getElementById('lbClose').focus();
+  }
+
+  function closeLB() {
+    lb.classList.remove('open');
+    document.body.style.overflow = '';
+    if (lastFocus) lastFocus.focus();
+  }
+
+  mosaic.addEventListener('click', e => {
+    const fig = e.target.closest('.tile');
+    if (fig) openLB(tileList.indexOf(fig));
+  });
+
+  document.getElementById('lbClose').addEventListener('click', closeLB);
+  document.getElementById('lbPrev').addEventListener('click', () => show(cur - 1, true));
+  document.getElementById('lbNext').addEventListener('click', () => show(cur + 1, true));
+  lb.addEventListener('click', e => { if (e.target === lb) closeLB(); });
+
+  document.addEventListener('keydown', e => {
+    if (!lb.classList.contains('open')) return;
+    if (e.key === 'Escape') closeLB();
+    else if (e.key === 'ArrowLeft') show(cur - 1, true);
+    else if (e.key === 'ArrowRight') show(cur + 1, true);
+  });
+
+  // swipe
+  let x0 = null;
+  lb.addEventListener('touchstart', e => { x0 = e.changedTouches[0].clientX; }, { passive: true });
+  lb.addEventListener('touchend', e => {
+    if (x0 === null) return;
+    const dx = e.changedTouches[0].clientX - x0;
+    if (Math.abs(dx) > 48) show(cur + (dx < 0 ? 1 : -1), true);
+    x0 = null;
+  }, { passive: true });
 
   // --- hero entrance
   requestAnimationFrame(() => {
