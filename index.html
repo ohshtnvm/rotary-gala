@@ -207,6 +207,17 @@
   .gal{background-size:cover;background-position:center;border:1px solid rgba(241,184,74,0.25);filter:sepia(0.3) saturate(0.9);transition:transform .4s,filter .4s,box-shadow .4s;cursor:pointer;}
   .gal:hover{transform:scale(1.03);filter:sepia(0) saturate(1.05);box-shadow:0 12px 30px rgba(0,0,0,0.45);z-index:2;}
   .gal.tall{grid-row:span 2;}.gal.wide{grid-column:span 2;}
+  .gal{position:relative;overflow:hidden;}
+  .gal-cap{position:absolute;left:0;right:0;bottom:0;padding:1.6rem .75rem .55rem;font-family:'Fraunces',serif;font-size:.68rem;letter-spacing:.08em;text-transform:uppercase;color:var(--cream);background:linear-gradient(transparent,rgba(5,13,31,.85));line-height:1.3;pointer-events:none;}
+  .gal:focus-visible{outline:2px solid var(--gold);outline-offset:3px;}
+  .mlb{position:fixed;inset:0;z-index:1000;background:rgba(5,13,31,.94);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:4rem 4.5rem 2.5rem;opacity:0;visibility:hidden;transition:opacity .3s,visibility .3s;}
+  .mlb.open{opacity:1;visibility:visible;}
+  .mlb img{max-width:100%;max-height:calc(100vh - 9rem);object-fit:contain;border:1px solid rgba(241,184,74,.35);box-shadow:0 20px 60px rgba(0,0,0,.6);}
+  .mlb-cap{margin-top:.9rem;font-size:.78rem;letter-spacing:.12em;text-transform:uppercase;color:var(--gold-soft);text-align:center;}
+  .mlb-btn{position:absolute;background:none;border:1px solid rgba(241,184,74,.4);color:var(--gold);width:44px;height:44px;border-radius:50%;font-size:1.3rem;line-height:1;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background .2s;}
+  .mlb-btn:hover,.mlb-btn:focus-visible{background:rgba(241,184,74,.15);outline:none;}
+  .mlb-close{top:1.2rem;right:1.2rem;}.mlb-prev{left:1rem;top:50%;transform:translateY(-50%);}.mlb-next{right:1rem;top:50%;transform:translateY(-50%);}
+  @media(max-width:760px){.mlb{padding:3.5rem 1rem 4.5rem;}.mlb-prev,.mlb-next{top:auto;bottom:1rem;transform:none;}.mlb-prev{left:calc(50% - 56px);}.mlb-next{right:calc(50% - 56px);}.gal-cap{font-size:.6rem;padding:1.2rem .55rem .45rem;}}
   @media(max-width:760px){.gal-grid{grid-template-columns:repeat(2,1fr);}.gal.wide{grid-column:span 2;}.gal.tall{grid-row:span 1;}}
 
   /* ===== TESTIMONIALS ===== */
@@ -542,14 +553,14 @@ VOICES end of hidden block -->
     <div class="deco-rule"><span class="line"></span><span class="diamond"></span><span class="line r"></span></div>
     <br><br>
     <div class="gal-grid">
-      <div class="gal tall" role="img" aria-label="Tarpon Springs Rotary Club banner in the 2002 Christmas parade" style="background-image:url('pics/moments/m1.webp')"></div>
-      <div class="gal" role="img" aria-label="Members at the club's 75th anniversary celebration" style="background-image:url('pics/moments/m2.webp')"></div>
-      <div class="gal wide" role="img" aria-label="A full house of Rotarians welcoming the Rotary International President to Tarpon Springs, 2008" style="background-image:url('pics/moments/m3.webp')"></div>
-      <div class="gal" role="img" aria-label="Rotarians volunteering at a Habitat for Humanity build" style="background-image:url('pics/moments/m4.webp')"></div>
-      <div class="gal" role="img" aria-label="Banner for the Tarpon Rotary Triathlon at Howard Park" style="background-image:url('pics/moments/m5.webp')"></div>
-      <div class="gal tall" role="img" aria-label="Members packing meals at Stop Hunger Now, 2013" style="background-image:url('pics/moments/m6.webp')"></div>
-      <div class="gal wide" role="img" aria-label="Rotary Youth Foundation check presentation" style="background-image:url('pics/moments/m7.webp')"></div>
-      <div class="gal" role="img" aria-label="Scholarship winners at the Rotary podium, 2007" style="background-image:url('pics/moments/m8.webp')"></div>
+      <div class="gal tall" role="button" tabindex="0" data-full="pics/moments/m1-full.webp" data-title="2002 Christmas Parade" aria-label="Enlarge photo: Tarpon Springs Rotary Club banner in the 2002 Christmas parade" style="background-image:url('pics/moments/m1.webp')"><span class="gal-cap">2002 Christmas Parade</span></div>
+      <div class="gal" role="button" tabindex="0" data-full="pics/moments/m2-full.webp" data-title="75th Anniversary Celebration" aria-label="Enlarge photo: Members at the club's 75th anniversary celebration" style="background-image:url('pics/moments/m2.webp')"><span class="gal-cap">75th Anniversary Celebration</span></div>
+      <div class="gal wide" role="button" tabindex="0" data-full="pics/moments/m3-full.webp" data-title="2008 Rotary International President Visit" aria-label="Enlarge photo: A full house of Rotarians welcoming the Rotary International President to Tarpon Springs, 2008" style="background-image:url('pics/moments/m3.webp')"><span class="gal-cap">2008 Rotary International President Visit</span></div>
+      <div class="gal" role="button" tabindex="0" data-full="pics/moments/m4-full.webp" data-title="Habitat for Humanity Build" aria-label="Enlarge photo: Rotarians volunteering at a Habitat for Humanity build" style="background-image:url('pics/moments/m4.webp')"><span class="gal-cap">Habitat for Humanity Build</span></div>
+      <div class="gal" role="button" tabindex="0" data-full="pics/moments/m5-full.webp" data-title="Tarpon Rotary Triathlon, Howard Park" aria-label="Enlarge photo: Banner for the Tarpon Rotary Triathlon at Howard Park" style="background-image:url('pics/moments/m5.webp')"><span class="gal-cap">Tarpon Rotary Triathlon, Howard Park</span></div>
+      <div class="gal tall" role="button" tabindex="0" data-full="pics/moments/m6-full.webp" data-title="Stop Hunger Now Meal Packing, 2013" aria-label="Enlarge photo: Members packing meals at Stop Hunger Now, 2013" style="background-image:url('pics/moments/m6.webp')"><span class="gal-cap">Stop Hunger Now Meal Packing, 2013</span></div>
+      <div class="gal wide" role="button" tabindex="0" data-full="pics/moments/m7-full.webp" data-title="Rotary Youth Foundation Check Presentation" aria-label="Enlarge photo: Rotary Youth Foundation check presentation" style="background-image:url('pics/moments/m7.webp')"><span class="gal-cap">Rotary Youth Foundation Check Presentation</span></div>
+      <div class="gal" role="button" tabindex="0" data-full="pics/moments/m8-full.webp" data-title="2007 Scholarship Winners" aria-label="Enlarge photo: Scholarship winners at the Rotary podium, 2007" style="background-image:url('pics/moments/m8.webp')"><span class="gal-cap">2007 Scholarship Winners</span></div>
     </div>
   </div>
 </section>
@@ -622,6 +633,13 @@ VOICES end of hidden block -->
   </div>
 </footer>
 
+<div class="mlb" id="mlb" role="dialog" aria-modal="true" aria-label="Photo viewer" aria-hidden="true">
+  <button class="mlb-btn mlb-close" id="mlbClose" aria-label="Close">&times;</button>
+  <button class="mlb-btn mlb-prev" id="mlbPrev" aria-label="Previous photo">&#8249;</button>
+  <img id="mlbImg" alt="">
+  <div class="mlb-cap" id="mlbCap"></div>
+  <button class="mlb-btn mlb-next" id="mlbNext" aria-label="Next photo">&#8250;</button>
+</div>
 <script>
   // FAQ accordion
   document.querySelectorAll('.faq-q').forEach(q=>{
@@ -641,6 +659,25 @@ VOICES end of hidden block -->
     if(!box||!btn) return;
     box.addEventListener('click',e=>{ if(!btn.contains(e.target)) btn.click(); });
     box.addEventListener('keydown',e=>{ if((e.key==='Enter'||e.key===' ')&&e.target===box){ e.preventDefault(); btn.click(); } });
+  })();
+
+  // ===== MOMENTS LIGHTBOX =====
+  (function(){
+    const tiles=[...document.querySelectorAll('#gallery .gal[data-full]')], lb=document.getElementById('mlb');
+    if(!tiles.length||!lb) return;
+    const img=document.getElementById('mlbImg'), cap=document.getElementById('mlbCap');
+    let i=0, last=null;
+    const show=n=>{ i=(n+tiles.length)%tiles.length; const t=tiles[i]; img.src=t.dataset.full; img.alt=t.getAttribute('aria-label').replace('Enlarge photo: ',''); cap.textContent=t.dataset.title; };
+    const open=n=>{ last=document.activeElement; show(n); lb.classList.add('open'); lb.setAttribute('aria-hidden','false'); document.body.style.overflow='hidden'; document.getElementById('mlbClose').focus(); };
+    const close=()=>{ lb.classList.remove('open'); lb.setAttribute('aria-hidden','true'); document.body.style.overflow=''; if(last) last.focus(); };
+    tiles.forEach((t,n)=>{ t.addEventListener('click',()=>open(n)); t.addEventListener('keydown',e=>{ if(e.key==='Enter'||e.key===' '){ e.preventDefault(); open(n); } }); });
+    document.getElementById('mlbClose').onclick=close;
+    document.getElementById('mlbPrev').onclick=()=>show(i-1);
+    document.getElementById('mlbNext').onclick=()=>show(i+1);
+    lb.addEventListener('click',e=>{ if(e.target===lb) close(); });
+    document.addEventListener('keydown',e=>{ if(!lb.classList.contains('open')) return; if(e.key==='Escape') close(); else if(e.key==='ArrowLeft') show(i-1); else if(e.key==='ArrowRight') show(i+1); });
+    let x0=null; lb.addEventListener('touchstart',e=>{x0=e.touches[0].clientX;},{passive:true});
+    lb.addEventListener('touchend',e=>{ if(x0===null) return; const dx=e.changedTouches[0].clientX-x0; if(Math.abs(dx)>50) show(dx<0?i+1:i-1); x0=null; });
   })();
 
   // ===== CHECKOUT =====
